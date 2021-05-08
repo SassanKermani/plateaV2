@@ -1,13 +1,66 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+
+body{
+	display: block;
+	margin: 0px;
+}
+
+#Mapveiw_Map{
+	width: 100vw;
+	height: 90vh;
+	/*border: solid black 1vw;*/
+}
+
+
+#Postview{
+	/*background-color: red;*/
+	width: 100vw;
+	height: 90vh;
+}
+
+#photoToPost{
+	width: 100vw;
+}
+
+#Webcam{/*
+	height: 40vh;
+	width: 100vw;*/
+}
+
+#menueBar{
+	z-index: 1;
+	position: absolute;
+	top: 90vh;
+	left: 0vw;
+	width: 100vw;
+	height: 10vh;
+
+	background-color: green;
+
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+
+	padding-top: 4vh;
+}
+
+.menueBar_iteam{
+	text-align: center;
+}
+
+#menueBarImg{
+	visibility: hidden;
+}
+
+/*body {
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
 }
+*/
