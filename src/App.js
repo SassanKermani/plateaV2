@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, state } from 'react'
+import { useState } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 
 const Menubar = require(`./components/Menubar`).default;
@@ -14,8 +14,13 @@ function App() {
 		setpageselection(str);
 	}
 
-	function postImg(str){
+	function takePicture(str){
 		setimagetopost(str);
+	}
+
+	function postPicture(){
+		setimagetopost(undefined);
+		setpageselection(`map`);
 	}
 
 	console.log(`pageReload`);
@@ -29,7 +34,7 @@ function App() {
 			return(
 				<div>
 					<Mapview/>
-					<Menubar postprop={postImg} changePage={chnagePage}/>
+					<Menubar postprop={takePicture} changePage={chnagePage}/>
 				</div>
 			)
 			break;
@@ -37,8 +42,8 @@ function App() {
 		case(pageselection == `post`):
 			return(
 				<div>
-					<Postview src={imagetopost} />
-					<Menubar postprop={postImg} changePage={chnagePage}/>
+					<Postview post={postPicture} src={imagetopost} />
+					<Menubar postprop={takePicture} changePage={chnagePage}/>
 				</div>
 			)
 			break;
@@ -46,7 +51,7 @@ function App() {
 		case(pageselection == `user`):
 			return(
 				<div>
-					<Menubar postprop={postImg} changePage={chnagePage}/>
+					<Menubar postprop={takePicture} changePage={chnagePage}/>
 				</div>
 			)
 			break;
@@ -55,7 +60,7 @@ function App() {
 			return(
 				<div>
 					<p>you broke it, what did you do you monster</p>
-					<Menubar postprop={postImg} changePage={chnagePage}/>
+					<Menubar postprop={takePicture} changePage={chnagePage}/>
 				</div>
 			)
 			break;

@@ -1,28 +1,32 @@
 import React from 'react';
+import { state } from 'react'
 
 class Postview extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = { latlng: [null, null] };
+	}
 
 	render() {
 
-		let lat = null;
-		let lng = null;
-
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition((position)=>{
-				lat = position.coords.latitude;
-				lng = position.coords.longitude;
+				console.log(position);
+				this.setState({latlng: [position.coords.latitude, position.coords.longitude]})
 			});
 		}
 
-		function postImg(){
-			console.log(`lat : ${lat}, lng : ${lng}`)
+		function postImg(post){
+			// console.log(`lat : ${lat}, lng : ${lng}`)
+			post();
 		}
 
 		return(
 			<div id="Postview">
 
 				<img id="photoToPost" src={this.props.src} />
-				<button onClick={postImg}>post</button>			
+				<p>lat:{this.state.latlng[0]}, lng:{this.state.latlng[1]}</p>
+				<button onClick={()=>{postImg(this.props.post)}}>post</button>
 
 			</div>
 		)
