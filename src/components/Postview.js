@@ -2,31 +2,29 @@ import React from 'react';
 import { state } from 'react'
 
 class Postview extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { latlng: [null, null] };
-	}
 
 	render() {
-
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition((position)=>{
-				console.log(position);
-				this.setState({latlng: [position.coords.latitude, position.coords.longitude]})
-			});
-		}
 
 		function postImg(post){
 			// console.log(`lat : ${lat}, lng : ${lng}`)
 			post();
 		}
 
+		console.log(this.props.crds)
+
 		return(
 			<div id="Postview">
-
-				<img id="photoToPost" src={this.props.src} />
-				<p>lat:{this.state.latlng[0]}, lng:{this.state.latlng[1]}</p>
-				<button onClick={()=>{postImg(this.props.post)}}>post</button>
+				<img id="img" src={this.props.src} />
+				<div id="img_Text">
+					<p>lat:{this.props.crd.latitude}, lng:{this.props.crd.longitude}</p>
+					<p>Title: <input type="text"></input></p>
+					<p>post:</p>
+					<textarea id="img_Text_textarea"/>
+				</div>
+				<div id="img_Post_Cancel">
+					<button>post</button>
+					<button onClick={()=>{postImg(this.props.post)}}>cancel</button>
+				</div>
 
 			</div>
 		)

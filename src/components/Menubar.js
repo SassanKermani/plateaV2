@@ -25,7 +25,8 @@ class Menubar extends React.Component {
 				<div onClick={()=>{this.props.changePage(`map`)}} className="menueBar_iteam">MAP</div>
 				{/*<div onClick={()=>{this.props.changePage(`post`)}} className="menueBar_iteam">POST</div>*/}
 
-				<div className="menueBar_iteam"><input type="file" accept="image/*" capture="camera" onChange={()=>{ formatImg(this.props.postprop) }} /></div>
+				{<div className="menueBar_iteam"><input type="file" accept="image/*" capture="camera" onChange={()=>{ formatImg(this.props.postprop) }} /></div>}
+				{/*<div className="menueBar_iteam"><input type="file" accept="image/*" capture="camera" onChange={()=>{ if(this.props.crd != false){formatImg(this.props.postprop)} }} /></div>*/}
 
 				<div onClick={()=>{this.props.changePage(`user`)}} className="menueBar_iteam">USER</div>
 			</div>

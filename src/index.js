@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-document.body.style.overflow = "hidden"
+// document.body.style.overflow = "hidden"
 
 ReactDOM.render(
 	<div>

@@ -6,6 +6,16 @@ const Menubar = require(`./components/Menubar`).default;
 const Mapview = require(`./components/Mapview`).default;
 const Postview = require(`./components/Postview`).default;
 
+let crd = false;
+navigator.geolocation.watchPosition((pos)=>{
+	console.log(pos);
+	crd = pos.coords;
+	if(crd == false){
+		this.forceUpdate()
+	}
+})
+
+
 function App() {
 	const [pageselection, setpageselection] = useState(`map`)
 	const [imagetopost, setimagetopost] = useState(undefined)
@@ -32,35 +42,36 @@ function App() {
 
 		case(pageselection == `map`):
 			return(
-				<div>
+				<div id="mainScreenContainer">
 					<Mapview/>
-					<Menubar postprop={takePicture} changePage={chnagePage}/>
+					<Menubar crd={crd} postprop={takePicture} changePage={chnagePage}/>
 				</div>
 			)
 			break;
 
 		case(pageselection == `post`):
 			return(
-				<div>
-					<Postview post={postPicture} src={imagetopost} />
-					<Menubar postprop={takePicture} changePage={chnagePage}/>
+				<div id="postScreenContainer">
+					<Postview crd={crd} post={postPicture} src={imagetopost} />
+					{/*<Menubar crd={crd} postprop={takePicture} changePage={chnagePage}/>*/}
 				</div>
 			)
 			break;
 
 		case(pageselection == `user`):
 			return(
-				<div>
-					<Menubar postprop={takePicture} changePage={chnagePage}/>
+				<div id="mainScreenContainer">
+					<div>test</div>
+					<Menubar crd={crd} postprop={takePicture} changePage={chnagePage}/>
 				</div>
 			)
 			break;
 
 		default:
 			return(
-				<div>
+				<div id="mainScreenContainer">
 					<p>you broke it, what did you do you monster</p>
-					<Menubar postprop={takePicture} changePage={chnagePage}/>
+					<Menubar crd={crd} postprop={takePicture} changePage={chnagePage}/>
 				</div>
 			)
 			break;
